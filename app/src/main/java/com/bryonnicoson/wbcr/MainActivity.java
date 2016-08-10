@@ -60,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
                 sb.append(jsonResponse.petfinder.pets.pet.get(i).age);
                 sb.append(" ");
                 sb.append(jsonResponse.petfinder.pets.pet.get(i).sex);
+                sb.append(" ");
+                sb.append(jsonResponse.petfinder.pets.pet.get(i).breeds.toString());
                 sb.append("\n");
             }
             tvTest.setText(sb.toString());

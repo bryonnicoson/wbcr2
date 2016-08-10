@@ -14,9 +14,15 @@ import java.util.List;
 public class Breeds {
     //@JsonProperty("breed")
     @SerializedName("breed")
-    //public List<String> breed = new ArrayList<String>();
-    public Object breed;
+    public List<String> breed = new ArrayList<String>();
+    //public Object breed;
     public Breeds(){}
 
-    // need conditional handling of breed - sometimes string, sometimes array
+    @Override
+    public String toString() {
+        String s = "";
+        for (String b : breed)
+            s += b + " ";
+        return s;
+    }
 }
