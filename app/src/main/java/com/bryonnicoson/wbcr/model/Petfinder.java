@@ -1,6 +1,5 @@
 package com.bryonnicoson.wbcr.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -8,11 +7,9 @@ import com.google.gson.annotations.SerializedName;
  */
 public class Petfinder {
 
-    //@JsonProperty("xmlns:xsi")
     @SerializedName("xmlns:xsi")
     private String xmlnsXsi;
 
-    //@JsonProperty("xsi:noNamespaceSchemaLocation")
     @SerializedName("xsi:noNamespaceSchemaLocation")
     private String xsiNoNamespaceSchemaLocation;
 

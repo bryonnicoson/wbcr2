@@ -1,6 +1,5 @@
 package com.bryonnicoson.wbcr.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -9,7 +8,6 @@ import com.google.gson.annotations.SerializedName;
 
 public class JsonResponse {
 
-    //@JsonProperty("petfinder")
     @SerializedName("petfinder")
     public Petfinder petfinder;
     public JsonResponse(){}
