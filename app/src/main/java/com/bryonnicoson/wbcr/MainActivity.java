@@ -8,10 +8,12 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.bryonnicoson.wbcr.model.Dog;
 import com.bryonnicoson.wbcr.model.JsonResponse;
 import com.google.gson.Gson;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -24,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
     private OkHttpClient client = new OkHttpClient();
     private Gson gson = new Gson();
     JsonResponse jsonResponse;
+    ArrayList<Dog> dogs = new ArrayList<Dog>();
+
 
     ListView mDogList;
     //DogCursorAdapter mAdapter;
@@ -33,10 +37,10 @@ public class MainActivity extends AppCompatActivity {
     //@BindView(R.id.test) TextView tvTest;
 
 
-    private class DogFetchTask extends AsyncTask<String, Void, JsonResponse>{
+    private class DogFetchTask extends AsyncTask<String, Void, JsonResponse> {
 
         @Override
-        protected JsonResponse doInBackground(String...params) {
+        protected JsonResponse doInBackground(String... params) {
             String url = "https://wishbonecr.herokuapp.com/";
             Request request = new Request.Builder().url(url).build();
             try {
@@ -47,10 +51,14 @@ public class MainActivity extends AppCompatActivity {
             }
             return jsonResponse;
         }
+
         protected void onPostExecute(JsonResponse jsonResponse) {
 
-            }
+            //make a list of Dogs
+
+
         }
+    }
 
 
     @Override

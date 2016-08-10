@@ -7,6 +7,7 @@ public class Pet {
 
     public String id;
     public String shelterId;
+    public String shelterPetId;
     public String name;
     public String animal;
     public Breeds breeds;
