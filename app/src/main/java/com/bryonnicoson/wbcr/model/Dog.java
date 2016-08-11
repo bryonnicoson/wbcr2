@@ -11,16 +11,16 @@ import java.util.List;
  */
 public class Dog implements Serializable {
 
-    public static String name;
-    public static String breed;
-    public static String age;
-    public static String sex;
-    public static String size;
-    public static boolean hasShots = false;
-    public static boolean altered = false;
-    public static boolean housetrained = false;
-    public static String description;
-    public static List<String> images = new ArrayList<String>();
+    public String name;
+    public String breed;
+    public String age;
+    public String sex;
+    public String size;
+    public boolean hasShots = false;
+    public boolean altered = false;
+    public boolean housetrained = false;
+    public String description;
+    public List<String> images;
 
     public Dog(String name, String breed, String age, String sex, String size, boolean hasShots,
                boolean altered, boolean housetrained, String description, List<String> images) {
@@ -36,8 +36,20 @@ public class Dog implements Serializable {
         this.images = images;
     }
 
-    public static ArrayList<Dog> dogMaker (JsonResponse jsonResponse) {
-        ArrayList<Dog> dogs = new ArrayList<Dog>();
+    public static ArrayList<Dog> dogMaker(JsonResponse jsonResponse) {
+
+        String name = "";
+        String breed = "";
+        String age = "";
+        String size = "";
+        String sex = "";
+        String description = "";
+        boolean hasShots = false;
+        boolean altered = false;
+        boolean housetrained = false;
+        ArrayList<String> images = new ArrayList<>();
+
+        ArrayList<Dog> dogs = new ArrayList<>();
 
         List<Pet> lP = jsonResponse.petfinder.pets.pet;
 
@@ -61,12 +73,21 @@ public class Dog implements Serializable {
             if(lP.get(i).age != null)
                 age = lP.get(i).age;
 
-            if(lP.get(i).sex != null)
-                sex = lP.get(i).sex;
+            if(lP.get(i).sex != null) {
+                if (lP.get(i).sex.equals("M"))
+                    sex = "Male";
+                else
+                    sex = "Female";
+            }
 
-            if(lP.get(i).size != null)
-                size = lP.get(i).size;
-
+            if(lP.get(i).size != null) {
+                if (lP.get(i).size.equals("S"))
+                    size = "Small";
+                if (lP.get(i).size.equals("M"))
+                    size = "Medium";
+                if (lP.get(i).size.equals("L"))
+                    size = "Large";
+            }
             // wishbone only wants to display these three options (hasShots, altered, housetrained)
             // if one of those is in option list, set appropriate boolean to true.
             if(lP.get(i).options.option != null) {
@@ -88,8 +109,9 @@ public class Dog implements Serializable {
             if(lP.get(i).media.photos.photo != null) {
                 images = new ArrayList<>();
                 for (int j = 0; j < lP.get(i).media.photos.photo.size(); j++) {
-                    if (lP.get(i).media.photos.photo.get(j).size.equals("x"))
+                    if (lP.get(i).media.photos.photo.get(j).size.equals("x")) {
                         images.add(lP.get(i).media.photos.photo.get(j).content);
+                    }
                 }
             }
 

@@ -1,5 +1,6 @@
 package com.bryonnicoson.wbcr;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -39,6 +40,11 @@ public class MainActivity extends AppCompatActivity {
 
     private class DogFetchTask extends AsyncTask<String, Void, JsonResponse> {
 
+        private Context mContext;
+        public DogFetchTask (Context context) {
+            mContext = context;
+        }
+
         @Override
         protected JsonResponse doInBackground(String... params) {
             String url = "https://wishbonecr.herokuapp.com/";
@@ -54,8 +60,10 @@ public class MainActivity extends AppCompatActivity {
 
         protected void onPostExecute(JsonResponse jsonResponse) {
 
-            //make a list of Dogs
             dogs = Dog.dogMaker(jsonResponse);
+            DogListAdapter dogListAdapter = new DogListAdapter(mContext, dogs);
+            ListView dogListView = (ListView) findViewById(R.id.dog_card_list_view);
+            dogListView.setAdapter(dogListAdapter);
 
         }
     }
@@ -67,6 +75,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        new DogFetchTask().execute();
+        new DogFetchTask(this).execute();
     }
 }
