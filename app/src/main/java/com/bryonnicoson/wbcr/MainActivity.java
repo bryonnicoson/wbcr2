@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(JsonResponse jsonResponse) {
 
             //make a list of Dogs
-
+            dogs = Dog.dogMaker(jsonResponse);
 
         }
     }
