@@ -88,6 +88,7 @@ public class Dog implements Serializable {
                 if (lP.get(i).size.equals("L"))
                     size = "Large";
             }
+
             // wishbone only wants to display these three options (hasShots, altered, housetrained)
             // if one of those is in option list, set appropriate boolean to true.
             if(lP.get(i).options.option != null) {

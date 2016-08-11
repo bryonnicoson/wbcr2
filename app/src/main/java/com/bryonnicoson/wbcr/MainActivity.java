@@ -5,9 +5,9 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.bryonnicoson.wbcr.model.Dog;
 import com.bryonnicoson.wbcr.model.JsonResponse;
@@ -16,8 +16,6 @@ import com.google.gson.Gson;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -26,17 +24,10 @@ public class MainActivity extends AppCompatActivity {
 
     private OkHttpClient client = new OkHttpClient();
     private Gson gson = new Gson();
-    JsonResponse jsonResponse;
-    ArrayList<Dog> dogs = new ArrayList<Dog>();
-
-
-    ListView mDogList;
-    //DogCursorAdapter mAdapter;
-    AdapterView.OnItemClickListener mDogClickListener;
-    Intent mDetailIntent;
-
-    //@BindView(R.id.test) TextView tvTest;
-
+    public JsonResponse jsonResponse;
+    public ArrayList<Dog> dogs = new ArrayList<Dog>();
+    public AdapterView.OnItemClickListener dogClickListener;
+    public Intent detailIntent;
 
     private class DogFetchTask extends AsyncTask<String, Void, JsonResponse> {
 
@@ -65,6 +56,16 @@ public class MainActivity extends AppCompatActivity {
             ListView dogListView = (ListView) findViewById(R.id.dog_card_list_view);
             dogListView.setAdapter(dogListAdapter);
 
+            dogClickListener = new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                    Dog dog = dogs.get(position);
+                    detailIntent.putExtra("DOG", dog);
+                    startActivity(detailIntent);
+                }
+            };
+            dogListView.setOnItemClickListener(dogClickListener);
+
         }
     }
 
@@ -73,7 +74,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
 
         new DogFetchTask(this).execute();
     }
