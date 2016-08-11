@@ -23,9 +23,9 @@ import okhttp3.Response;
 public class MainActivity extends AppCompatActivity {
 
     private OkHttpClient client = new OkHttpClient();
-    private Gson gson = new Gson();
     public JsonResponse jsonResponse;
-    public ArrayList<Dog> dogs = new ArrayList<Dog>();
+    private Gson gson = new Gson();
+    public ArrayList<Dog> dogs = new ArrayList<>();
     public AdapterView.OnItemClickListener dogClickListener;
     public Intent detailIntent;
 
@@ -74,6 +74,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        detailIntent = new Intent(MainActivity.this, DogDetailActivity.class);
 
         new DogFetchTask(this).execute();
     }
