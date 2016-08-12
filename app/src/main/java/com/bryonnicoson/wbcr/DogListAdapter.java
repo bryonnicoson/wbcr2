@@ -20,8 +20,8 @@ public class DogListAdapter extends ArrayAdapter<Dog> {
         TextView tvName;
         TextView tvSize;
         TextView tvAge;
-//        ImageView ivSex;
-        TextView tvSex;
+        ImageView ivSex;
+//        TextView tvSex;
         TextView tvBreed;
     }
 
@@ -43,8 +43,8 @@ public class DogListAdapter extends ArrayAdapter<Dog> {
             viewHolder.tvName = (TextView) view.findViewById(R.id.dog_name);
             viewHolder.tvSize = (TextView) view.findViewById(R.id.dog_size);
             viewHolder.tvAge = (TextView) view.findViewById(R.id.dog_age);
-            viewHolder.tvSex = (TextView) view.findViewById(R.id.dog_sex);
-            //viewHolder.ivSex = (ImageView) view.findViewById(R.id.dog_sex);
+           // viewHolder.tvSex = (TextView) view.findViewById(R.id.dog_sex);
+            viewHolder.ivSex = (ImageView) view.findViewById(R.id.dog_sex);
             viewHolder.tvBreed = (TextView) view.findViewById(R.id.dog_breed);
             view.setTag(viewHolder);
         } else {
@@ -54,8 +54,13 @@ public class DogListAdapter extends ArrayAdapter<Dog> {
         viewHolder.tvName.setText(dog.name);
         viewHolder.tvSize.setText(dog.size);
         viewHolder.tvAge.setText(dog.age);
-        viewHolder.tvSex.setText(dog.sex);
+        //viewHolder.tvSex.setText(dog.sex);
         viewHolder.tvBreed.setText(dog.breed);
+
+        if (dog.sex.equals("Male"))
+            viewHolder.ivSex.setImageResource(R.drawable.male);
+        else
+            viewHolder.ivSex.setImageResource(R.drawable.female);
 
         return view;
     }
