@@ -16,9 +16,7 @@ import java.util.List;
 
 public class DogDetailActivity extends AppCompatActivity {
 
-    String name, breed, age, sex, size, description;
     boolean hasShots, altered, housetrained;
-    List<String> images;
     SliderLayout sliderShow;
     TextView dogName, dogSize, dogAge, dogSex, dogBreed;
     WebView dogDescription;

@@ -20,6 +20,7 @@ public class DogListAdapter extends ArrayAdapter<Dog> {
         TextView tvName;
         TextView tvSize;
         TextView tvAge;
+//        ImageView ivSex;
         TextView tvSex;
         TextView tvBreed;
     }
@@ -43,6 +44,7 @@ public class DogListAdapter extends ArrayAdapter<Dog> {
             viewHolder.tvSize = (TextView) view.findViewById(R.id.dog_size);
             viewHolder.tvAge = (TextView) view.findViewById(R.id.dog_age);
             viewHolder.tvSex = (TextView) view.findViewById(R.id.dog_sex);
+            //viewHolder.ivSex = (ImageView) view.findViewById(R.id.dog_sex);
             viewHolder.tvBreed = (TextView) view.findViewById(R.id.dog_breed);
             view.setTag(viewHolder);
         } else {
