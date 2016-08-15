@@ -63,11 +63,12 @@
             />
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+
+            android:layout_width="14dp"
+            android:layout_height="14dp"
             android:id="@+id/dog_sex"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/dog_age"
+            android:baselineAlignBottom="true"
             android:transitionName="@string/transition_dog_sex"
             android:layout_below="@id/dog_name"
             />

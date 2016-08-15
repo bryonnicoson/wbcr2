@@ -40,21 +40,39 @@ public class DogDetailActivity extends AppCompatActivity {
         dogBreed = (TextView)findViewById(R.id.detail_dog_breed);
         dogBreed.setText(dog.breed);
 
-        // using webview to justify description text
+        // remove boilerplate link text from description - we don't need urls
+        String[] boilerplate = {"For information about",
+                                "For adoption informaton",
+                                "To fill out our adoption"};
 
+        // find index of first match
+        int match = 9999;
+        int firstmatch = 9999;
+        for (int i = 0; i < boilerplate.length; i++){
+            match = dog.description.indexOf(boilerplate[i]);
+            if (match != -1 && match < firstmatch)
+                firstmatch = match;
+        }
+        String trimmed = dog.description.substring(0, firstmatch);
+
+        // using webview to justify description text
         dogDescription = (WebView) findViewById(R.id.detail_dog_description);
 
         String text = "<html><body>"
                 + "<p align=\"justify\" style=\"line-height: 150%; \">"
-                + dog.description.replaceAll("\n", "<br />")
+                + trimmed.replaceAll("\n", "<br />")
                 + "</p> "
                 + "</body></html>";
 
         dogDescription.loadData(text, "text/html", "utf-8");
 
+        // TODO: add indicators for these booleans...
+
         hasShots = dog.hasShots;
         altered = dog.altered;
         housetrained = dog.housetrained;
+
+        // TODO: add buttons / imagebuttons linking to application, website, breed info
 
         sliderShow = (SliderLayout) findViewById(R.id.slider);
         for (String image : dog.images) {
@@ -64,9 +82,6 @@ public class DogDetailActivity extends AppCompatActivity {
 
             sliderShow.addSlider(defaultSliderView);
         }
-
-
-
     }
     @Override
     protected void onStop() {

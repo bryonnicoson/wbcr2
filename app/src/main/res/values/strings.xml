@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Wishbone Canine Rescue</string>
+    <string name="app_name">WishBone Canine Rescue</string>
     <string name="transition_dog_photo">Dog Photo</string>
     <string name="transition_dog_name">Dog Name</string>
     <string name="transition_dog_size">Dog Size</string>
