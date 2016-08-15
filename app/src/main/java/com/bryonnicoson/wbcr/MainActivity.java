@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
             dogs = Dog.dogMaker(jsonResponse);
             DogListAdapter dogListAdapter = new DogListAdapter(mContext, dogs);
             ListView dogListView = (ListView) findViewById(R.id.dog_card_list_view);
-            dogListView.setBackgroundResource(R.drawable.splashscreen);
+            dogListView.setBackgroundResource(R.drawable.listviewbackground);
             dogListView.setAdapter(dogListAdapter);
 
             dogClickListener = new AdapterView.OnItemClickListener() {

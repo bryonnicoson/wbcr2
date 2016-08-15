@@ -46,8 +46,8 @@ public class DogDetailActivity extends AppCompatActivity {
                                 "To fill out our adoption"};
 
         // find index of first match
-        int match = 9999;
-        int firstmatch = 9999;
+        int match = dog.description.length();
+        int firstmatch = dog.description.length();
         for (int i = 0; i < boilerplate.length; i++){
             match = dog.description.indexOf(boilerplate[i]);
             if (match != -1 && match < firstmatch)
