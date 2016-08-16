@@ -1,112 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/blue100"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.bryonnicoson.wbcr.DogDetailActivity">
 
-    <LinearLayout
-        android:id="@+id/detail_top"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
-
-        <com.daimajia.slider.library.SliderLayout
-            android:id="@+id/slider"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
-            android:background="@drawable/border"
-            android:gravity="center_horizontal"
-            android:padding="5dp" />
-
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/detail_caption"
-        android:layout_below="@id/detail_top"
-        android:orientation="vertical"
-        android:gravity="center_horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/detail_dog_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="24sp" />
+        android:layout_height="match_parent"
+        android:padding="1dp">
 
         <LinearLayout
-            android:orientation="horizontal"
-            android:gravity="center_horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/detail_dog_size"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:id="@+id/detail_top"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/detail_dog_name"
-                android:paddingRight="4dp"
-                android:textSize="18sp" />
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/detail_dog_age"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/detail_dog_name"
-                android:layout_toRightOf="@id/detail_dog_size"
-                android:paddingRight="4dp"
-                android:textSize="18sp" />
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
 
-            <TextView
-                android:id="@+id/detail_dog_sex"
-                android:layout_width="wrap_content"
+                <com.daimajia.slider.library.SliderLayout
+                    android:id="@+id/slider"
+                    android:layout_width="300dp"
+                    android:layout_height="300dp"
+                    android:background="@drawable/border"
+                    android:gravity="center_horizontal"
+                    android:padding="5dp" />
+
+
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+            <com.daimajia.slider.library.Indicators.PagerIndicator
+                android:id="@+id/custom_indicator"
+                style="@style/AndroidImageSlider_Attractive_Rect_Blue"
+                android:layout_gravity="center_horizontal"
+                />
+
+            <LinearLayout
+                android:id="@+id/detail_caption"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/detail_dog_name"
-                android:layout_toRightOf="@id/detail_dog_age"
-                android:textSize="18sp" />
+                android:layout_below="@id/detail_top"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/detail_dog_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="24sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/detail_dog_size"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/detail_dog_name"
+                        android:paddingRight="4dp"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/detail_dog_age"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/detail_dog_name"
+                        android:layout_toRightOf="@id/detail_dog_size"
+                        android:paddingRight="4dp"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/detail_dog_sex"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/detail_dog_name"
+                        android:layout_toRightOf="@id/detail_dog_age"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/detail_dog_breed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <WebView
+                android:id="@+id/detail_dog_description"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/blue100"></WebView>
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/detail_dog_breed"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="18sp" />
-    </LinearLayout>
-
-    <ScrollView
-        android:background="@drawable/border"
-        android:padding="1dp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/detail_caption">
-
-        <WebView
-            android:id="@+id/detail_dog_description"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"></WebView>
-        <!--
-         <TextView
-             android:id="@+id/detail_dog_description"
-             android:textSize="18sp"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content" />
-             -->
     </ScrollView>
 
 </RelativeLayout>

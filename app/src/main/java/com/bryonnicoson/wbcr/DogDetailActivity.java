@@ -1,12 +1,15 @@
 package com.bryonnicoson.wbcr;
 
 import android.content.Intent;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.webkit.WebView;
 import android.widget.TextView;
 
 import com.bryonnicoson.wbcr.model.Dog;
+import com.daimajia.slider.library.Indicators.PagerIndicator;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.DefaultSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
@@ -26,6 +29,7 @@ public class DogDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dog_detail);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Dog dog = (Dog) getIntent().getSerializableExtra("DOG");
 
@@ -58,12 +62,12 @@ public class DogDetailActivity extends AppCompatActivity {
         // using webview to justify description text
         dogDescription = (WebView) findViewById(R.id.detail_dog_description);
 
-        String text = "<html><body>"
-                + "<p align=\"justify\" style=\"line-height: 150%; \">"
+        String text = "<html><body style=\"background-color: #BBDEFB;\">"
+                + "<p align=\"justify\" style=\"line-height: 150%; background-color: #BBDEFB;\">"
                 + trimmed.replaceAll("\n", "<br />")
                 + "</p> "
                 + "</body></html>";
-
+        text.replaceAll("â\u0080¦", "...");
         dogDescription.loadData(text, "text/html", "utf-8");
 
         // TODO: add indicators for these booleans...
@@ -82,10 +86,26 @@ public class DogDetailActivity extends AppCompatActivity {
 
             sliderShow.addSlider(defaultSliderView);
         }
+        sliderShow.stopAutoCycle();
+        sliderShow.setPresetIndicator(SliderLayout.PresetIndicators.Right_Bottom);
+       // sliderShow.setCustomIndicator((PagerIndicator)findViewById(R.id.custom_indicator));
+
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()){
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
     @Override
     protected void onStop() {
         sliderShow.stopAutoCycle();
         super.onStop();
     }
+
 }
