@@ -23,8 +23,14 @@ public class DogListAdapter extends ArrayAdapter<Dog> {
 //        ImageView ivSex;
         TextView tvSex;
         TextView tvBreed;
-        TextView tvOptions;
-        ImageView ivCheck;
+//        ImageView ivVaccinated;
+//        TextView tvVaccinated;
+//        ImageView ivAltered;
+//        TextView tvAltered;
+//        ImageView ivHouseTrained;
+//        TextView tvHouseTrained;
+
+
     }
 
     public DogListAdapter(Context context, ArrayList<Dog> dogs) {
@@ -48,8 +54,13 @@ public class DogListAdapter extends ArrayAdapter<Dog> {
             viewHolder.tvSex = (TextView) view.findViewById(R.id.dog_sex);
 //            viewHolder.ivSex = (ImageView) view.findViewById(R.id.dog_sex);
             viewHolder.tvBreed = (TextView) view.findViewById(R.id.dog_breed);
-            viewHolder.ivCheck = (ImageView) view.findViewById(R.id.dog_check);
-            viewHolder.tvOptions = (TextView) view.findViewById(R.id.dog_options);
+//            viewHolder.ivVaccinated = (ImageView) view.findViewById(R.id.list_iv_vaccinated);
+//            viewHolder.tvVaccinated = (TextView) view.findViewById(R.id.list_tv_vaccinated);
+//            viewHolder.ivAltered = (ImageView) view.findViewById(R.id.list_iv_altered);
+//            viewHolder.tvAltered = (TextView) view.findViewById(R.id.list_tv_altered);
+//            viewHolder.ivHouseTrained = (ImageView) view.findViewById(R.id.list_iv_housetrained);
+//            viewHolder.tvHouseTrained = (TextView) view.findViewById(R.id.list_tv_housetrained);
+
             view.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) view.getTag();
@@ -62,31 +73,24 @@ public class DogListAdapter extends ArrayAdapter<Dog> {
         viewHolder.tvBreed.setText(dog.breed);
 
         // if hasShots, housetrained, altered, add imageview checkedbox and textview string
-        if ((dog.hasShots)||(dog.altered)||(dog.housetrained)) {
-            viewHolder.ivCheck.setImageResource(R.drawable.checked36);
-        }
-        StringBuilder sb = new StringBuilder();
-        if (dog.hasShots){
-            sb.append("vaccinated");
-        }
-        if (dog.altered){
-            if(!sb.equals("")){
-                sb.append(" \u00b7 ");
-            }
-            if(dog.sex == "Male"){
-                sb.append("neutered");
-            } else {
-                sb.append("spayed");
-            }
-        }
-        if (dog.housetrained){
-            if(!sb.equals("")){
-                sb.append(" \u00b7 ");  // add middot between options
-            }
-            sb.append("house-trained");
-        }
-
-        viewHolder.tvOptions.setText(sb.toString());
+//        if (dog.hasShots) {
+//            viewHolder.ivVaccinated.setImageResource(R.drawable.checked36);
+//            viewHolder.tvVaccinated.setText("vaccinated");
+//        }
+//
+//        if (dog.altered) {
+//            viewHolder.ivAltered.setImageResource(R.drawable.checked36);
+//            if (dog.sex.equals("Male")) {
+//                viewHolder.tvAltered.setText("neutered");
+//            } else {
+//                viewHolder.tvAltered.setText("spayed");
+//            }
+//        }
+//
+//        if (dog.housetrained) {
+//            viewHolder.ivHouseTrained.setImageResource(R.drawable.checked36);
+//            viewHolder.tvHouseTrained.setText("house-trained");
+//        }
 
 //        if (dog.sex.equals("Male"))
 //            viewHolder.ivSex.setImageResource(R.drawable.male);

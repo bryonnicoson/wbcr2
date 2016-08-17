@@ -1,11 +1,16 @@
 package com.bryonnicoson.wbcr;
 
 import android.content.Intent;
+import android.graphics.PorterDuff;
+import android.net.Uri;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.webkit.WebView;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bryonnicoson.wbcr.model.Dog;
@@ -20,11 +25,12 @@ import java.util.List;
 
 public class DogDetailActivity extends AppCompatActivity  {
 
-    boolean hasShots, altered, housetrained;
     SliderLayout sliderShow;
-    TextView dogName, dogSize, dogAge, dogSex, dogBreed;
+    ImageView ivVaccinated, ivAltered, ivHouseTrained;
+    TextView dogName, dogSize, dogAge, dogSex, dogBreed, tvVaccinated, tvAltered, tvHouseTrained;
     WebView dogDescription;
-    Intent mainIntent;
+    Button btnAdopt;
+    Intent intentApply;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,14 +74,33 @@ public class DogDetailActivity extends AppCompatActivity  {
                 + trimmed.replaceAll("\n", "<br />")
                 + "</p> "
                 + "</body></html>";
-        String textra = text.replaceAll("â\u0080¦", "...");
+        String textra = text.replaceAll("â\u0080¦", "..."); // hack to insert ellipses
         dogDescription.loadData(textra, "text/html", "utf-8");
 
-        // TODO: add indicators for these booleans...
+        if (dog.hasShots) {
+            ivVaccinated = (ImageView) findViewById(R.id.detail_iv_vaccinated);
+            ivVaccinated.setImageResource(R.drawable.checked36);
+            tvVaccinated = (TextView) findViewById(R.id.detail_tv_vaccinated);
+            tvVaccinated.setText("vaccinated");
+        }
 
-        hasShots = dog.hasShots;
-        altered = dog.altered;
-        housetrained = dog.housetrained;
+        if (dog.altered) {
+            ivAltered = (ImageView) findViewById(R.id.detail_iv_altered);
+            ivAltered.setImageResource(R.drawable.checked36);
+            tvAltered = (TextView) findViewById(R.id.detail_tv_altered);
+            if (dog.sex.equals("Male")) {
+                tvAltered.setText("neutered");
+            } else {
+                tvAltered.setText("spayed");
+            }
+        }
+
+        if (dog.housetrained) {
+            ivHouseTrained= (ImageView) findViewById(R.id.detail_iv_housetrained);
+            ivHouseTrained.setImageResource(R.drawable.checked36);
+            tvHouseTrained = (TextView) findViewById(R.id.detail_tv_housetrained);
+            tvHouseTrained.setText("house-trained");
+        }
 
         // TODO: add buttons / imagebuttons linking to application, website, breed info
 
@@ -93,6 +118,20 @@ public class DogDetailActivity extends AppCompatActivity  {
         //sliderShow.setPresetIndicator(SliderLayout.PresetIndicators.Right_Bottom);
         sliderShow.setCustomIndicator((PagerIndicator)findViewById(R.id.custom_indicator));
 
+        // set button background & text colors to R.color values
+        btnAdopt = (Button) findViewById(R.id.button_adopt);
+        btnAdopt.getBackground().setColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.MULTIPLY);
+        btnAdopt.setTextColor(getResources().getColor(R.color.white));
+
+
+        btnAdopt.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                Intent intentApply = new Intent(Intent.ACTION_VIEW, Uri.parse("https://fs16.formsite.com/WishBoneCanineRescue/adoptionapplication/index.html"));
+                startActivity(intentApply);
+            }
+        });
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

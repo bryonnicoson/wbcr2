@@ -1,110 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:layout_height="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
     android:orientation="vertical">
 
-<android.support.v7.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardBackgroundColor="@color/cardview_light_background"
-    app:cardUseCompatPadding="true"
-    app:cardElevation="4dp"
-    android:id="@+id/dog_card_view"
-    >
-
-
-    <RelativeLayout
+    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/dog_card_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp">
+        app:cardBackgroundColor="@color/cardview_light_background"
+        app:cardElevation="4dp"
+        app:cardUseCompatPadding="true">
 
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:id="@+id/dog_photo"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginRight="16dp"
-            android:scaleType="centerCrop"
-            android:transitionName="@string/transition_dog_photo"
-            />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/dog_name"
-            android:layout_toRightOf="@+id/dog_photo"
-            android:layout_alignParentTop="true"
-            android:transitionName="@string/transition_dog_name"
-            android:textSize="24sp"
-            android:paddingBottom="2dp"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/dog_size"
-            android:layout_toRightOf="@id/dog_photo"
-            android:layout_below="@+id/dog_name"
-            android:transitionName="@string/transition_dog_size"
-            android:paddingRight="4dp"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/dog_age"
-            android:layout_toRightOf="@+id/dog_size"
-            android:layout_below="@+id/dog_name"
-            android:paddingRight="4dp"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/dog_sex"
-            android:layout_toRightOf="@id/dog_age"
-            android:baselineAlignBottom="true"
-            android:transitionName="@string/transition_dog_sex"
-            android:layout_below="@id/dog_name"
-            />
-
-        <TextView
-            android:paddingTop="2dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/dog_breed"
-            android:singleLine="true"
-            android:transitionName="@string/transition_dog_breed"
-            android:layout_toRightOf="@id/dog_photo"
-            android:layout_below="@+id/dog_sex"
-            />
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:paddingTop="2dp"
-            android:layout_below="@id/dog_breed"
-            android:layout_toRightOf="@id/dog_photo"
-            android:gravity="center_vertical"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:padding="8dp">
 
-        <ImageView
-            android:id="@+id/dog_check"
-            android:paddingRight="4dp"
-            android:layout_width="16dp"
-            android:layout_height="16dp" />
+            <ImageView
+                android:id="@+id/dog_photo"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="16dp"
+                android:scaleType="centerCrop"
+                android:transitionName="@string/transition_dog_photo" />
 
-        <TextView
-            android:id="@+id/dog_options"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/dog_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/dog_photo"
+                android:paddingBottom="2dp"
+                android:textSize="24sp"
+                android:transitionName="@string/transition_dog_name" />
 
-        </LinearLayout>
-    </RelativeLayout>
-</android.support.v7.widget.CardView>
+            <TextView
+                android:id="@+id/dog_size"
+                android:textSize="18sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dog_name"
+                android:layout_toRightOf="@id/dog_photo"
+                android:paddingRight="4dp"
+                android:transitionName="@string/transition_dog_size" />
+
+            <TextView
+                android:id="@+id/dog_age"
+                android:textSize="18sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dog_name"
+                android:layout_toRightOf="@+id/dog_size"
+                android:paddingRight="4dp" />
+
+            <TextView
+                android:id="@+id/dog_sex"
+                android:textSize="18sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/dog_name"
+                android:layout_toRightOf="@id/dog_age"
+                android:baselineAlignBottom="true"
+                android:transitionName="@string/transition_dog_sex" />
+
+            <TextView
+                android:id="@+id/dog_breed"
+                android:textSize="18sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dog_sex"
+                android:layout_toRightOf="@id/dog_photo"
+                android:paddingTop="2dp"
+                android:singleLine="true"
+                android:transitionName="@string/transition_dog_breed" />
+<!--
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/dog_breed"
+                android:layout_toRightOf="@id/dog_photo"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingTop="2dp">
+
+                <ImageView
+                    android:id="@+id/list_iv_vaccinated"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:paddingRight="4dp" />
+
+                <TextView
+                    android:id="@+id/list_tv_vaccinated"
+                    android:paddingRight="4dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <ImageView
+                    android:id="@+id/list_iv_altered"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:paddingRight="4dp" />
+
+                <TextView
+                    android:id="@+id/list_tv_altered"
+                    android:paddingRight="4dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <ImageView
+                    android:id="@+id/list_iv_housetrained"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:paddingRight="4dp" />
+
+                <TextView
+                    android:id="@+id/list_tv_housetrained"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout> -->
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
 </LinearLayout>
