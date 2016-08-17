@@ -37,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
             mContext = context;
         }
 
+        // TODO: Cache dogs - if response = String, serve cached data instead
+        // TODO: look into Okhttp interceptor for caching
         @Override
         protected JsonResponse doInBackground(String... params) {
             String url = "https://wishbonecr.herokuapp.com/";
