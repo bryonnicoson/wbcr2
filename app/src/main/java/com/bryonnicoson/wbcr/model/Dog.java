@@ -44,9 +44,9 @@ public class Dog implements Serializable {
         String size = "";
         String sex = "";
         String description = "";
-        boolean hasShots = false;
-        boolean altered = false;
-        boolean housetrained = false;
+        boolean hasShots;
+        boolean altered;
+        boolean housetrained;
         ArrayList<String> images = new ArrayList<>();
 
         ArrayList<Dog> dogs = new ArrayList<>();
@@ -54,6 +54,10 @@ public class Dog implements Serializable {
         List<Pet> lP = jsonResponse.petfinder.pets.pet;
 
         for (int i = 0; i < lP.size(); i++) {
+
+            hasShots = false;
+            altered = false;
+            housetrained = false;
 
             if(lP.get(i).name != null)
                 name = lP.get(i).name;

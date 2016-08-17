@@ -11,13 +11,14 @@ import android.widget.TextView;
 import com.bryonnicoson.wbcr.model.Dog;
 import com.daimajia.slider.library.Indicators.PagerIndicator;
 import com.daimajia.slider.library.SliderLayout;
+import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.DefaultSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class DogDetailActivity extends AppCompatActivity {
+public class DogDetailActivity extends AppCompatActivity  {
 
     boolean hasShots, altered, housetrained;
     SliderLayout sliderShow;
@@ -57,18 +58,18 @@ public class DogDetailActivity extends AppCompatActivity {
             if (match != -1 && match < firstmatch)
                 firstmatch = match;
         }
-        String trimmed = dog.description.substring(0, firstmatch);
+        String trimmed = dog.description.substring(0, firstmatch).trim();
 
         // using webview to justify description text
         dogDescription = (WebView) findViewById(R.id.detail_dog_description);
 
-        String text = "<html><body style=\"background-color: #BBDEFB;\">"
+        String text = "<html><head><meta charset=\"UTF-8\"></head><body style=\"background-color: #BBDEFB;\">"
                 + "<p align=\"justify\" style=\"line-height: 150%; background-color: #BBDEFB;\">"
                 + trimmed.replaceAll("\n", "<br />")
                 + "</p> "
                 + "</body></html>";
-        text.replaceAll("â\u0080¦", "...");
-        dogDescription.loadData(text, "text/html", "utf-8");
+        String textra = text.replaceAll("â\u0080¦", "...");
+        dogDescription.loadData(textra, "text/html", "utf-8");
 
         // TODO: add indicators for these booleans...
 
@@ -87,8 +88,10 @@ public class DogDetailActivity extends AppCompatActivity {
             sliderShow.addSlider(defaultSliderView);
         }
         sliderShow.stopAutoCycle();
-        sliderShow.setPresetIndicator(SliderLayout.PresetIndicators.Right_Bottom);
-       // sliderShow.setCustomIndicator((PagerIndicator)findViewById(R.id.custom_indicator));
+        sliderShow.setCurrentPosition(0);  // necessary to line up indicator and initial image
+        //sliderShow.setDuration(4000);
+        //sliderShow.setPresetIndicator(SliderLayout.PresetIndicators.Right_Bottom);
+        sliderShow.setCustomIndicator((PagerIndicator)findViewById(R.id.custom_indicator));
 
     }
     @Override
